@@ -1,5 +1,5 @@
 torch
-transformers==4.33.1
+transformers==4.36.0
 typing-extensions==4.8.0
 diffusers==0.15.0
 accelerate==0.20.3
