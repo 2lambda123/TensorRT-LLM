@@ -58,8 +58,8 @@ public:
     TensorPtr badWordsList;               // [2, badWordsLength], on gpu
     TensorPtr stopWordsList;              // [2, stopWordsLength], on gpu
 
-    bool computeCumLogProbs;              // boolean that controls if cumLogProbs should be computed for that request
-    bool computeLogProbs;                 // boolean that controls if cumLogProbs should be computed for that request
+    bool computeCumLogProbs; // boolean that controls if cumLogProbs should be computed for that request
+    bool computeLogProbs;    // boolean that controls if cumLogProbs should be computed for that request
 };
 
 class Input : public decoder::Input

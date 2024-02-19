@@ -277,9 +277,9 @@ int BertAttentionPlugin::enqueueImpl(const nvinfer1::PluginTensorDesc* inputDesc
         if (!mQKHalfAccum && gemm_data_type != CUDA_R_32F)
         {
             mCublasWrapper->stridedBatchedGemm(CUBLAS_OP_T, CUBLAS_OP_N,
-                attention_seq_len_2,             // n
-                attention_seq_len_1,             // m
-                mHeadSize,                       // k
+                attention_seq_len_2, // n
+                attention_seq_len_1, // m
+                mHeadSize,           // k
                 qk_scale_gemm, k_buf_2_, gemm_data_type,
                 mHeadSize,                       // k
                 attention_seq_len_2 * mHeadSize, // n * k
@@ -287,9 +287,9 @@ int BertAttentionPlugin::enqueueImpl(const nvinfer1::PluginTensorDesc* inputDesc
                 mHeadSize,                       // k
                 attention_seq_len_1 * mHeadSize, // m * k
                 0.0f, qk_buf_float_, CUDA_R_32F,
-                attention_seq_len_2,             // n
+                attention_seq_len_2, // n
                 attention_seq_len_2 * attention_seq_len_1,
-                request_batch_size * mNumHeads,  // global batch size
+                request_batch_size * mNumHeads, // global batch size
                 CUDA_R_32F);
 
             // add relative position bias

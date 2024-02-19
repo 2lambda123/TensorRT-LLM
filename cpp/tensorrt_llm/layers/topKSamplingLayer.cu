@@ -194,8 +194,8 @@ void TopKSamplingLayer<T>::runSampling(DecodingOutputParams& outputs, DecodingPa
         (int) runtime_max_top_k_, // useless because runtime_top_k_buf_ is never
                                   // nullptr. Keep for legacy.
         (int*) (runtime_top_k_buf_ + ite * local_batch_size),
-        1.0f,                     // useless because runtime_top_p_buf_ is never nullptr. Keep for
-                                  // legacy.
+        1.0f, // useless because runtime_top_p_buf_ is never nullptr. Keep for
+              // legacy.
         runtime_top_p_buf_ + ite * local_batch_size, vocab_size_padded_, end_ids, stream_, local_batch_size,
         skip_decode_buf_ + ite * local_batch_size);
     sync_check_cuda_error();

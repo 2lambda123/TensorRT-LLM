@@ -79,13 +79,17 @@ if(NOT DEFINED TRT_LLM_LIB_DIR)
   # Find <project_root>/tensorrt_llm/libs.
   list(APPEND TRT_LLM_LIB_DIR "../../../tensorrt_llm/libs")
 endif()
-find_library(TRT_LLM_LIB_PATH nvinfer_plugin_tensorrt_llm
-             HINTS ${TRT_LLM_LIB_DIR} NO_DEFAULT_PATH)
+find_library(
+  TRT_LLM_LIB_PATH nvinfer_plugin_tensorrt_llm
+  HINTS ${TRT_LLM_LIB_DIR}
+  NO_DEFAULT_PATH)
 find_library(TRT_LLM_LIB_PATH nvinfer_plugin_tensorrt_llm REQUIRED)
 message(STATUS "Found nvinfer_plugin_tensorrt_llm library: ${TRT_LLM_LIB_PATH}")
 
-find_library(TRT_LLM_COMMON_LIB_PATH th_common HINTS ${TRT_LLM_LIB_DIR}
-                                                     NO_DEFAULT_PATH)
+find_library(
+  TRT_LLM_COMMON_LIB_PATH th_common
+  HINTS ${TRT_LLM_LIB_DIR}
+  NO_DEFAULT_PATH)
 find_library(TRT_LLM_COMMON_LIB_PATH th_common REQUIRED)
 message(STATUS "Found th_common library: ${TRT_LLM_COMMON_LIB_PATH}")
 

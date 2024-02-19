@@ -83,11 +83,11 @@ public:
         {
         }
 
-        tc::Tensor parent_ids;     // [max_seq_len, batch_size * beam_width], necessary in beam search
+        tc::Tensor parent_ids; // [max_seq_len, batch_size * beam_width], necessary in beam search
         tc::Tensor
             tgt_cache_indirection; // [local_batch_size, beam_width, max_seq_len], the k/v cache index for beam search
         std::shared_ptr<kernels::BeamHypotheses>
-            beamHypotheses;        // a special structure which maintains some pointers of beam search
+            beamHypotheses; // a special structure which maintains some pointers of beam search
 
         tc::Tensor
             parent_ids_ptr; // [batch_size] int*, each array is [beam_width, max_seq_len], necessary in beam search

@@ -224,7 +224,7 @@ public:
         IteratorB iterator_B,              ///< iterator over B operand in global memory
         IteratorScale iterator_scale,      ///< iterator over scale operand in global memory
         FragmentC const& src_accum)
-    {                                      ///< source accumulator tile
+    { ///< source accumulator tile
 
         //
         // Prologue

@@ -73,7 +73,7 @@ public:
         output_log_probs;                 // [request_ouptut_length, batch_size * beam_width], must be float*, optional
     std::optional<tc::Tensor> parent_ids; // [max_seq_len, batch_size * beam_width], necessary in beam search
 
-    tc::Tensor output_ids_ptr;            // [batch_size] int* (2-d array), each int* has [beam_width, max_seq_len]
+    tc::Tensor output_ids_ptr; // [batch_size] int* (2-d array), each int* has [beam_width, max_seq_len]
 };
 
 } // namespace tensorrt_llm::layers

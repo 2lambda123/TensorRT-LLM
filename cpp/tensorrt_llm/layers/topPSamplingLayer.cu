@@ -108,12 +108,12 @@ void TopPSamplingLayer<T>::allocateBuffer(std::size_t batch_size, std::vector<fl
     float const max_top_p = (top_p.size() > 0) ? *std::max_element(std::begin(top_p), std::end(top_p)) : 0.0f;
     invokeTopPSampling<T>(nullptr, // workspace
         sampling_workspace_size_, cub_temp_storage_size_,
-        nullptr,                   // output_ids
-        nullptr,                   // sequence_length
-        nullptr,                   // finished_buffer
-        nullptr,                   // cum_log_probs
-        nullptr,                   // output_log_probs
-        nullptr,                   // log_probs
+        nullptr, // output_ids
+        nullptr, // sequence_length
+        nullptr, // finished_buffer
+        nullptr, // cum_log_probs
+        nullptr, // output_log_probs
+        nullptr, // log_probs
         topp_id_vals_buf_, topp_offset_buf_, begin_topp_offset_buf_, curandstate_buf_, batch_size, vocab_size_padded_,
         nullptr, max_top_p, stream_, skip_decode_buf_);
     sampling_workspace_ = allocator_->reMalloc(sampling_workspace_, sampling_workspace_size_, true);

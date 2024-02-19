@@ -208,7 +208,7 @@ public:
         std::uniform_int_distribution<> endIdsDistr(
             0, vocabSize - 1); // -1 because uniform_int_distribution generates closed interval
         std::uniform_int_distribution<> finishedDistr(
-            0, 99);            // 99 because uniform_int_distribution generates closed interval
+            0, 99); // 99 because uniform_int_distribution generates closed interval
         for (SizeType bi = 0; bi < batchSize; ++bi)
         {
             endIdsHostPtr[bi] = endIdsDistr(gen);

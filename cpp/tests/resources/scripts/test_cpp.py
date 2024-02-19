@@ -403,8 +403,8 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    if (args.only_gpt + args.only_gptj + args.only_llama + args.only_chatglm >
-            1):
+    if (args.only_gpt + args.only_gptj + args.only_llama + args.only_chatglm
+            > 1):
         parser.error('Cannot combine multiple only_* arguments.')
 
     if args.only_gpt:

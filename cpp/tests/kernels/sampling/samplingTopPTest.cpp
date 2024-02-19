@@ -47,12 +47,12 @@ private:
         size_t cubTempStorageSize;
         tk::invokeBatchTopPSampling<T>(nullptr, // workspace
             workspaceSize, cubTempStorageSize,
-            nullptr,                            // output_ids
-            nullptr,                            // sequence_length
-            nullptr,                            // finished_buffer
-            nullptr,                            // cum_log_probs
-            nullptr,                            // output_log_probs
-            nullptr,                            // log_probs
+            nullptr, // output_ids
+            nullptr, // sequence_length
+            nullptr, // finished_buffer
+            nullptr, // cum_log_probs
+            nullptr, // output_log_probs
+            nullptr, // log_probs
             bufferCast<int32_t>(*this->mTopPIdValsDevice), bufferCast<int32_t>(*this->mEndOffsetsDevice),
             bufferCast<int32_t>(*this->mBeginOffsetsDevice), this->mCurandStatesDevice, params.batchSize,
             params.vocabSize, nullptr, this->mMaxTopP, bufferCast<float>(*this->mTopPsDevice), this->mStream->get(),
@@ -66,12 +66,12 @@ private:
         size_t cubTempStorageSize;
         tk::invokeBatchTopPSampling<T>(nullptr, // workspace
             workspaceSize, cubTempStorageSize,
-            nullptr,                            // output_ids
-            nullptr,                            // sequence_length
-            nullptr,                            // finished_buffer
-            nullptr,                            // cum_log_probs
-            nullptr,                            // output_log_probs
-            nullptr,                            // log_probs
+            nullptr, // output_ids
+            nullptr, // sequence_length
+            nullptr, // finished_buffer
+            nullptr, // cum_log_probs
+            nullptr, // output_log_probs
+            nullptr, // log_probs
             bufferCast<int32_t>(*this->mTopPIdValsDevice), bufferCast<int32_t>(*this->mEndOffsetsDevice),
             bufferCast<int32_t>(*this->mBeginOffsetsDevice), this->mCurandStatesDevice, params.batchSize,
             params.vocabSize, nullptr, this->mMaxTopP, bufferCast<float>(*this->mTopPsDevice), this->mStream->get(),

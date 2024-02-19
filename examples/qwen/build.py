@@ -548,8 +548,8 @@ def build(rank, args):
     tensorrt_llm.logger.set_level(args.log_level)
     if not os.path.exists(args.output_dir):
         os.makedirs(args.output_dir)
-    multi_query_mode = (args.n_kv_head
-                        is not None) and (args.n_kv_head != args.n_head)
+    multi_query_mode = (args.n_kv_head is not None) and (args.n_kv_head
+                                                         != args.n_head)
 
     # when doing serializing build, all ranks share one engine
     builder = Builder()

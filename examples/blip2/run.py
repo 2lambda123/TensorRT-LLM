@@ -169,9 +169,10 @@ if __name__ == '__main__':
     visual_output_info = session_vit.infer_shapes(
         [TensorInfo('input', trt.DataType.FLOAT, image.shape)])
     visual_outputs = {
-        t.name: torch.empty(tuple(t.shape),
-                            dtype=trt_dtype_to_torch(t.dtype),
-                            device='cuda')
+        t.name:
+        torch.empty(tuple(t.shape),
+                    dtype=trt_dtype_to_torch(t.dtype),
+                    device='cuda')
         for t in visual_output_info
     }
 
@@ -201,9 +202,10 @@ if __name__ == '__main__':
         TensorInfo('image_atts', trt.DataType.INT64, image_atts.shape)
     ])
     qformer_outputs = {
-        t.name: torch.empty(tuple(t.shape),
-                            dtype=trt_dtype_to_torch(t.dtype),
-                            device='cuda')
+        t.name:
+        torch.empty(tuple(t.shape),
+                    dtype=trt_dtype_to_torch(t.dtype),
+                    device='cuda')
         for t in qformer_output_info
     }
     ok = session_qformer.run(qformer_inputs, qformer_outputs, stream)

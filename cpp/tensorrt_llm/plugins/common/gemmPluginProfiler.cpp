@@ -87,7 +87,7 @@ size_t GemmPluginProfiler<Config, RunnerPtr, GemmIdType, GemmIdHashType>::getSer
     const GemmIdType& gemmId) const
 {
     reader_lock lock(mMNKProfileMap->mutex);
-    return sizeof(int) +                                 // size of the tactics map
+    return sizeof(int) + // size of the tactics map
         mMNKProfileMap->getMProfileMap(gemmId)->size()
         * sizeof(std::pair<int, std::optional<Config>>); // size of the tactics map
 }

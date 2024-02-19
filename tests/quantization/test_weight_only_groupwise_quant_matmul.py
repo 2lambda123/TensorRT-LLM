@@ -231,8 +231,8 @@ class TestWeightOnlyGroupWiseQuantMatmul(unittest.TestCase):
                            (1, 1024, 128, 'float16', True, True, True, 128),
                            (16, 1024, 256, 'float16', True, True, False, 128),
                            (32, 2048, 384, 'float16', True, False, True, 128),
-                           (64, 2048, 1024, 'float16', True, False, False, 128)]
-                          )
+                           (64, 2048, 1024, 'float16', True, False, False, 128)
+                           ])
     def test_prequant_matmul_int4_input(self,
                                         m,
                                         n,
