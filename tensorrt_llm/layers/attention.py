@@ -655,8 +655,8 @@ class Attention(Module):
                 else:
                     embed_positions = constant(self.embed_positions)
 
-                if default_net().strongly_typed and (embed_positions.dtype !=
-                                                     value.dtype):
+                if default_net().strongly_typed and (embed_positions.dtype
+                                                     != value.dtype):
                     embed_positions = cast(embed_positions, value.dtype)
 
                 if self.rotary_embedding_dim is not None:
@@ -854,8 +854,8 @@ class Attention(Module):
 
             attention_probs = softmax(attention_scores, dim=-1)
 
-            if default_net().strongly_typed and (attention_probs.dtype !=
-                                                 value.dtype):
+            if default_net().strongly_typed and (attention_probs.dtype
+                                                 != value.dtype):
                 attention_probs = cast(attention_probs, value.dtype)
 
             context = matmul(attention_probs, value).permute([0, 2, 1, 3])

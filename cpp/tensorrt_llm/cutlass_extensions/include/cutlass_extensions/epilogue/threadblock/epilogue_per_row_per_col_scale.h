@@ -223,7 +223,7 @@ public:
     CUTLASS_DEVICE
     void set_k_partition(int split_k_index, ///< Index of this threadblock within split-K partitioned scheme
         int split_k_slices)
-    {                                       ///< Total number of split-K slices
+    { ///< Total number of split-K slices
     }
 
     /// Called to set the batch index

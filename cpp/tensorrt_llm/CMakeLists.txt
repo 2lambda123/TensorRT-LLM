@@ -131,8 +131,10 @@ set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
 add_library(${SHARED_TARGET} SHARED)
 
 set_target_properties(
-  ${SHARED_TARGET} PROPERTIES CXX_STANDARD "17" CXX_STANDARD_REQUIRED "YES"
-                              CXX_EXTENSIONS "NO")
+  ${SHARED_TARGET}
+  PROPERTIES CXX_STANDARD "17"
+             CXX_STANDARD_REQUIRED "YES"
+             CXX_EXTENSIONS "NO")
 
 if(NOT MSVC) # Unix-like compilers
   set(UNDEFINED_FLAG "-Wl,--no-undefined")
@@ -149,8 +151,11 @@ target_link_libraries(${SHARED_TARGET} PUBLIC ${TRTLLM_LINK_LIBS}
 add_library(${STATIC_TARGET} STATIC)
 
 set_target_properties(
-  ${STATIC_TARGET} PROPERTIES CXX_STANDARD "17" CXX_STANDARD_REQUIRED "YES"
-                              CXX_EXTENSIONS "NO" POSITION_INDEPENDENT_CODE ON)
+  ${STATIC_TARGET}
+  PROPERTIES CXX_STANDARD "17"
+             CXX_STANDARD_REQUIRED "YES"
+             CXX_EXTENSIONS "NO"
+             POSITION_INDEPENDENT_CODE ON)
 
 target_link_libraries(${STATIC_TARGET} PUBLIC ${TRTLLM_LINK_LIBS})
 

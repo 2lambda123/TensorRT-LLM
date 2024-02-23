@@ -147,8 +147,9 @@ def get_long_texts(dataset_openweb):
     for datapoint in dataset_openweb["train"]:
         text = datapoint["text"]
         approximate_tokens = len(text.split())
-        if (approximate_tokens > args.max_kv_cache_len) and (
-                approximate_tokens < args.max_input_len):
+        if (approximate_tokens
+                > args.max_kv_cache_len) and (approximate_tokens
+                                              < args.max_input_len):
             yield text
 
 

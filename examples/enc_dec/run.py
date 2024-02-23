@@ -434,8 +434,8 @@ if __name__ == "__main__":
             output_ids = hf_output_ids.squeeze(dim=1)
             hf_output_text = tokenizer.batch_decode(output_ids,
                                                     skip_special_tokens=True)
-            decoder_input_lengths = (decoder_input_ids !=
-                                     tokenizer.pad_token_id).sum(dim=1)
+            decoder_input_lengths = (decoder_input_ids
+                                     != tokenizer.pad_token_id).sum(dim=1)
             output_gen_lengths = (output_ids != tokenizer.eos_token_id).sum(
                 dim=1) - decoder_input_lengths
             print("--------------------------------------")
@@ -468,8 +468,8 @@ if __name__ == "__main__":
         output_ids = tllm_output_ids[:, 0, :]
         output_text = tokenizer.batch_decode(output_ids,
                                              skip_special_tokens=True)
-        decoder_input_lengths = (decoder_input_ids !=
-                                 tokenizer.pad_token_id).sum(dim=1)
+        decoder_input_lengths = (decoder_input_ids
+                                 != tokenizer.pad_token_id).sum(dim=1)
         output_gen_lengths = (output_ids != tokenizer.eos_token_id).sum(
             dim=1) - decoder_input_lengths
         print("--------------------------------------")

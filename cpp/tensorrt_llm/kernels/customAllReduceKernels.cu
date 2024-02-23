@@ -336,7 +336,7 @@ std::tuple<int, int> kernelLaunchConfig(AllReduceStrategyType algo, AllReducePar
     switch (algo)
     {
     case AllReduceStrategyType::ONESHOT:
-    {     // one stage all reduce algo
+    { // one stage all reduce algo
         if (total_threads <= DEFAULT_BLOCK_SIZE)
         { // local reduce
             threads_per_block = WARP_SIZE * divUp(total_threads, WARP_SIZE);

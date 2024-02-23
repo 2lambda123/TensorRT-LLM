@@ -655,15 +655,15 @@ int GPTAttentionPluginCommon::enqueueContext(const EnqueueContextParams<T, KVCac
             // Attn_weight[b, h*s_q, s_k] = Q[b, h*s_q, d] * K'[b, d, s_k]
             // Attn_weight'[b, s_k, h*s_q] = K[b, s_k, d] * Q'[b, d, h*s_q]
             mCublasWrapper->stridedBatchedGemm(CUBLAS_OP_T, CUBLAS_OP_N,
-                attention_seq_len_2,                                   // n
-                attention_seq_len_1 * mNumHeads,                       // m
-                getHeadSize(),                                         // k
+                attention_seq_len_2,             // n
+                attention_seq_len_1 * mNumHeads, // m
+                getHeadSize(),                   // k
                 qk_scale_gemm, k_buf_2_, gemm_data_type,
-                getHeadSize(),                                         // k
-                attention_seq_len_2 * getHeadSize(),                   // n * k
+                getHeadSize(),                       // k
+                attention_seq_len_2 * getHeadSize(), // n * k
                 q_buf_2_, gemm_data_type,
-                getHeadSize(),                                         // k
-                attention_seq_len_1 * mNumHeads * getHeadSize(),       // m * k
+                getHeadSize(),                                   // k
+                attention_seq_len_1 * mNumHeads * getHeadSize(), // m * k
                 0.0f, gemm_out_buf_, gemm_out_data_type,
                 attention_seq_len_2,                                   // n
                 attention_seq_len_1 * mNumHeads * attention_seq_len_2, // m * n
@@ -675,9 +675,9 @@ int GPTAttentionPluginCommon::enqueueContext(const EnqueueContextParams<T, KVCac
             // Attn_weight[b*h, s_q, s_k] = Q[b*h, s_q, d] * K'[b*h, d, s_k]
             // Attn_weight'[b*h, s_k, s_q] = K[b*h, s_k, d] * Q'[b*h, d, s_q]
             mCublasWrapper->stridedBatchedGemm(CUBLAS_OP_T, CUBLAS_OP_N,
-                attention_seq_len_2,                 // n
-                attention_seq_len_1,                 // m
-                getHeadSize(),                       // k
+                attention_seq_len_2, // n
+                attention_seq_len_1, // m
+                getHeadSize(),       // k
                 qk_scale_gemm, k_buf_2_, gemm_data_type,
                 getHeadSize(),                       // k
                 attention_seq_len_2 * getHeadSize(), // n * k
@@ -685,9 +685,9 @@ int GPTAttentionPluginCommon::enqueueContext(const EnqueueContextParams<T, KVCac
                 getHeadSize(),                       // k
                 attention_seq_len_1 * getHeadSize(), // m * k
                 0.0f, gemm_out_buf_, gemm_out_data_type,
-                attention_seq_len_2,                 // n
+                attention_seq_len_2, // n
                 attention_seq_len_2 * attention_seq_len_1,
-                params.batch_size * mNumHeads,       // global batch size
+                params.batch_size * mNumHeads, // global batch size
                 CUDA_R_32F);
         }
         else // GQA
@@ -705,15 +705,15 @@ int GPTAttentionPluginCommon::enqueueContext(const EnqueueContextParams<T, KVCac
                 void* qkptr = is_qk_buf_float_ ? static_cast<void*>(qk_buf_float_ + qk_offset)
                                                : static_cast<void*>(qk_buf_ + qk_offset);
                 mCublasWrapper->stridedBatchedGemm(CUBLAS_OP_T, CUBLAS_OP_N,
-                    attention_seq_len_2,                                   // n
-                    attention_seq_len_1 * num_qheads_per_kv_head,          // m
-                    getHeadSize(),                                         // k
+                    attention_seq_len_2,                          // n
+                    attention_seq_len_1 * num_qheads_per_kv_head, // m
+                    getHeadSize(),                                // k
                     qk_scale_gemm, kptr, gemm_data_type,
-                    getHeadSize(),                                         // k
-                    mNumKVHeads * attention_seq_len_2 * getHeadSize(),     // n * k
+                    getHeadSize(),                                     // k
+                    mNumKVHeads * attention_seq_len_2 * getHeadSize(), // n * k
                     qptr, gemm_data_type,
-                    getHeadSize(),                                         // k
-                    attention_seq_len_1 * mNumHeads * getHeadSize(),       // m * k
+                    getHeadSize(),                                   // k
+                    attention_seq_len_1 * mNumHeads * getHeadSize(), // m * k
                     0.0f, qkptr, gemm_out_data_type,
                     attention_seq_len_2,                                   // n
                     attention_seq_len_1 * mNumHeads * attention_seq_len_2, // m * n
@@ -784,19 +784,19 @@ int GPTAttentionPluginCommon::enqueueContext(const EnqueueContextParams<T, KVCac
             // O[b, h*s_q, d] = Attn_weight[b, h*s_q, s_k] * V[b, s_k, d]
             // O'[b, d, h*s_q] = V'[b, d, s_k] * Attn_weight'[b, s_k, h*s_q]
             mCublasWrapper->stridedBatchedGemm(CUBLAS_OP_N, CUBLAS_OP_N,
-                getHeadSize(),                                         // n
-                mNumHeads * attention_seq_len_1,                       // m
-                attention_seq_len_2,                                   // k
+                getHeadSize(),                   // n
+                mNumHeads * attention_seq_len_1, // m
+                attention_seq_len_2,             // k
                 v_buf_2_,
-                getHeadSize(),                                         // n
-                getHeadSize() * attention_seq_len_2,                   // n * k
+                getHeadSize(),                       // n
+                getHeadSize() * attention_seq_len_2, // n * k
                 qk_buf_,
                 attention_seq_len_2,                                   // k
                 attention_seq_len_2 * mNumHeads * attention_seq_len_1, // m * k
                 qkv_buf_2_,
-                getHeadSize(),                                         // n
-                getHeadSize() * mNumHeads * attention_seq_len_1,       // n * m
-                params.batch_size                                      // global batch size
+                getHeadSize(),                                   // n
+                getHeadSize() * mNumHeads * attention_seq_len_1, // n * m
+                params.batch_size                                // global batch size
             );
         }
         else if (mNumKVHeads == mNumHeads) // MHA
@@ -820,19 +820,19 @@ int GPTAttentionPluginCommon::enqueueContext(const EnqueueContextParams<T, KVCac
                 T* vptr = v_buf_2_ + (ki * attention_seq_len_2 * getHeadSize());
                 T* qkvptr = qkv_buf_2_ + (ki * attention_seq_len_1 * num_qheads_per_kv_head * getHeadSize());
                 mCublasWrapper->stridedBatchedGemm(CUBLAS_OP_N, CUBLAS_OP_N,
-                    getHeadSize(),                                         // n
-                    num_qheads_per_kv_head * attention_seq_len_1,          // m
-                    attention_seq_len_2,                                   // k
+                    getHeadSize(),                                // n
+                    num_qheads_per_kv_head * attention_seq_len_1, // m
+                    attention_seq_len_2,                          // k
                     vptr,
-                    getHeadSize(),                                         // n
-                    mNumKVHeads * getHeadSize() * attention_seq_len_2,     // n * k
+                    getHeadSize(),                                     // n
+                    mNumKVHeads * getHeadSize() * attention_seq_len_2, // n * k
                     qkptr,
                     attention_seq_len_2,                                   // k
                     attention_seq_len_2 * mNumHeads * attention_seq_len_1, // m * k
                     qkvptr,
-                    getHeadSize(),                                         // n
-                    getHeadSize() * mNumHeads * attention_seq_len_1,       // n * m
-                    params.batch_size                                      // global batch size
+                    getHeadSize(),                                   // n
+                    getHeadSize() * mNumHeads * attention_seq_len_1, // n * m
+                    params.batch_size                                // global batch size
                 );
             }
         }

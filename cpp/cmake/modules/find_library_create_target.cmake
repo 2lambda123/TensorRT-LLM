@@ -27,7 +27,10 @@ macro(find_library_create_target target_name lib libtype hints)
       HINTS ${hints}
       NO_DEFAULT_PATH)
   endif()
-  find_library(${lib}_LIB_PATH ${lib} HINTS ${hints} NO_DEFAULT_PATH)
+  find_library(
+    ${lib}_LIB_PATH ${lib}
+    HINTS ${hints}
+    NO_DEFAULT_PATH)
   find_library(${lib}_LIB_PATH ${lib})
   message(STATUS "Library that was found ${${lib}_LIB_PATH}")
   add_library(${target_name} ${libtype} IMPORTED)

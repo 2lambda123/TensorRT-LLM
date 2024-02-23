@@ -266,7 +266,10 @@ set(COMMON_HEADER_DIRS ${PROJECT_SOURCE_DIR} ${CUDAToolkit_INCLUDE_DIR})
 message(STATUS "COMMON_HEADER_DIRS: ${COMMON_HEADER_DIRS}")
 
 if(NOT WIN32 AND NOT DEFINED USE_CXX11_ABI)
-  find_package(Python3 COMPONENTS Interpreter Development REQUIRED)
+  find_package(
+    Python3
+    COMPONENTS Interpreter Development
+    REQUIRED)
   execute_process(
     COMMAND ${Python3_EXECUTABLE} "-c"
             "import torch; print(torch.compiled_with_cxx11_abi(),end='');"
@@ -308,7 +311,10 @@ if(BUILD_PYT)
   endif()
   unset(ENV{TORCH_CUDA_ARCH_LIST})
 
-  find_package(Python3 COMPONENTS Interpreter Development REQUIRED)
+  find_package(
+    Python3
+    COMPONENTS Interpreter Development
+    REQUIRED)
   message(STATUS "Found Python executable at ${Python3_EXECUTABLE}")
   message(STATUS "Found Python libraries at ${Python3_LIBRARY_DIRS}")
   link_directories("${Python3_LIBRARY_DIRS}")

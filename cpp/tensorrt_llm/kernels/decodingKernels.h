@@ -43,8 +43,8 @@ struct gatherTreeParam
     const int* end_tokens = nullptr; // [batch_size], end token ids of each query
     int* output_ids = nullptr;       // the buffer to put finalized ids
     cudaStream_t stream;
-    float* cum_log_probs = nullptr;  // [batch_size, beam_width]
-    float length_penalty = 1.0f;     // on cpu
+    float* cum_log_probs = nullptr; // [batch_size, beam_width]
+    float length_penalty = 1.0f;    // on cpu
 };
 
 /*
