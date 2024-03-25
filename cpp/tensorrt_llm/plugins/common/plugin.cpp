@@ -92,8 +92,7 @@ public:
         if (result == nullptr)
         {
             // Create the resource and register with an observer.
-            result = std::shared_ptr<T>{mCreator().release(),
-                [this, ctx](T* obj)
+            result = std::shared_ptr<T>{mCreator().release(), [this, ctx](T* obj)
                 {
                     if (obj == nullptr)
                     {
