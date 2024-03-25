@@ -154,29 +154,29 @@ extern "C"
         static tensorrt_llm::plugins::LookupPluginCreator lookupPluginCreator;
         static tensorrt_llm::plugins::LoraPluginCreator loraPluginCreator;
 
-        static std::array pluginCreators
-            = { creatorPtr(identityPluginCreator),
-                  creatorPtr(bertAttentionPluginCreator),
-                  creatorPtr(gptAttentionPluginCreator),
-                  creatorPtr(gemmPluginCreator),
+        static std::array pluginCreators = {
+            creatorPtr(identityPluginCreator),
+            creatorPtr(bertAttentionPluginCreator),
+            creatorPtr(gptAttentionPluginCreator),
+            creatorPtr(gemmPluginCreator),
 #if ENABLE_MULTI_DEVICE
-                  creatorPtr(sendPluginCreator),
-                  creatorPtr(recvPluginCreator),
-                  creatorPtr(allreducePluginCreator),
-                  creatorPtr(allgatherPluginCreator),
+            creatorPtr(sendPluginCreator),
+            creatorPtr(recvPluginCreator),
+            creatorPtr(allreducePluginCreator),
+            creatorPtr(allgatherPluginCreator),
 #endif // ENABLE_MULTI_DEVICE
-                  creatorPtr(layernormPluginCreator),
-                  creatorPtr(rmsnormPluginCreator),
-                  creatorPtr(smoothQuantGemmPluginCreator),
-                  creatorPtr(layernormQuantizationPluginCreator),
-                  creatorPtr(quantizePerTokenPluginCreator),
-                  creatorPtr(quantizeTensorPluginCreator),
-                  creatorPtr(rmsnormQuantizationPluginCreator),
-                  creatorPtr(weightOnlyGroupwiseQuantMatmulPluginCreator),
-                  creatorPtr(weightOnlyQuantMatmulPluginCreator),
-                  creatorPtr(lookupPluginCreator),
-                  creatorPtr(loraPluginCreator),
-              };
+            creatorPtr(layernormPluginCreator),
+            creatorPtr(rmsnormPluginCreator),
+            creatorPtr(smoothQuantGemmPluginCreator),
+            creatorPtr(layernormQuantizationPluginCreator),
+            creatorPtr(quantizePerTokenPluginCreator),
+            creatorPtr(quantizeTensorPluginCreator),
+            creatorPtr(rmsnormQuantizationPluginCreator),
+            creatorPtr(weightOnlyGroupwiseQuantMatmulPluginCreator),
+            creatorPtr(weightOnlyQuantMatmulPluginCreator),
+            creatorPtr(lookupPluginCreator),
+            creatorPtr(loraPluginCreator),
+        };
         nbCreators = pluginCreators.size();
         return pluginCreators.data();
     }

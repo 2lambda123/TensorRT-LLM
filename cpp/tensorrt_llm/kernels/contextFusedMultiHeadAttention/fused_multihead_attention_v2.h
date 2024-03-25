@@ -214,7 +214,7 @@ public:
     FusedMultiHeadAttentionXMMAKernelV2(const FusedMultiHeadAttentionKernelMetaInfoV2* pMetaStart,
         unsigned int nMetaCount, Data_type type, unsigned int sm)
         : TFusedMultiHeadAttentionXMMAKernel<FusedMultiHeadAttentionKernelMetaInfoV2,
-            Fused_multihead_attention_params_v2>(pMetaStart, nMetaCount, type, sm)
+              Fused_multihead_attention_params_v2>(pMetaStart, nMetaCount, type, sm)
     {
     }
 
@@ -251,16 +251,11 @@ public:
                 int mMaxBatchHead;
             } unrollList[] = {
 #if CUDA_VERSION >= 11080
-                {kSM_90, DATA_TYPE_FP16, 64, 64, 256},
-                {kSM_90, DATA_TYPE_FP16, 128, 64, 128},
-                {kSM_90, DATA_TYPE_FP16, 256, 64, 128},
-                {kSM_90, DATA_TYPE_FP16, 384, 64, 64},
-                {kSM_90, DATA_TYPE_FP16, 512, 64, 64},
-                {kSM_90, DATA_TYPE_BF16, 64, 64, 256},
-                {kSM_90, DATA_TYPE_BF16, 128, 64, 128},
-                {kSM_90, DATA_TYPE_BF16, 256, 64, 128},
-                {kSM_90, DATA_TYPE_BF16, 384, 64, 64},
-                {kSM_90, DATA_TYPE_BF16, 512, 64, 64}
+                {kSM_90, DATA_TYPE_FP16, 64, 64, 256}, {kSM_90, DATA_TYPE_FP16, 128, 64, 128},
+                {kSM_90, DATA_TYPE_FP16, 256, 64, 128}, {kSM_90, DATA_TYPE_FP16, 384, 64, 64},
+                {kSM_90, DATA_TYPE_FP16, 512, 64, 64}, {kSM_90, DATA_TYPE_BF16, 64, 64, 256},
+                {kSM_90, DATA_TYPE_BF16, 128, 64, 128}, {kSM_90, DATA_TYPE_BF16, 256, 64, 128},
+                {kSM_90, DATA_TYPE_BF16, 384, 64, 64}, {kSM_90, DATA_TYPE_BF16, 512, 64, 64}
 #endif
             };
             for (unsigned int i = 0u; i < sizeof(unrollList) / sizeof(unrollList[0]); ++i)

@@ -203,8 +203,8 @@ std::optional<Config> GemmPluginProfiler<Config, RunnerPtr, GemmIdType, GemmIdHa
         catch (const std::exception& e)
         {
             std::ostringstream msg;
-            msg << "Cannot profile configuration " << ii << " (for"
-                << " m=" << m << ", n=" << n << ", k=" << k << "). Skipped";
+            msg << "Cannot profile configuration " << ii << " (for" << " m=" << m << ", n=" << n << ", k=" << k
+                << "). Skipped";
             TLLM_LOG_WARNING(msg.str());
             continue;
         }
@@ -220,8 +220,8 @@ std::optional<Config> GemmPluginProfiler<Config, RunnerPtr, GemmIdType, GemmIdHa
     if (!foundOne)
     {
         std::ostringstream msg;
-        msg << "Have not found any valid GEMM config for shape ("
-            << "m=" << m << ", n=" << n << ", k=" << k << "). Will try to use default or fail at runtime";
+        msg << "Have not found any valid GEMM config for shape (" << "m=" << m << ", n=" << n << ", k=" << k
+            << "). Will try to use default or fail at runtime";
         TLLM_LOG_WARNING(msg.str());
         return std::nullopt;
     }

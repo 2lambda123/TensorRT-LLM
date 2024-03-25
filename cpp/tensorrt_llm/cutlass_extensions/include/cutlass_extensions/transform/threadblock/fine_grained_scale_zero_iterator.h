@@ -199,7 +199,7 @@ public:
         int thread_id,                                                     ///< ID of each participating thread
         int group_size)
         : FineGrainedScaleZeroIterator(
-            params, pointer_scale, pointer_zero, extent, thread_id, make_Coord(0, 0), group_size)
+              params, pointer_scale, pointer_zero, extent, thread_id, make_Coord(0, 0), group_size)
     {
     }
 

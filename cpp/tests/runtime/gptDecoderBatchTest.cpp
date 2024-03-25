@@ -76,16 +76,15 @@ void verifyResults(BufferManager& manager, GptDecoderBatch const& decoder,
             auto const outputPtr = output + tc::flat_index(outputShape.d, b, bw, 0);
             auto begin = outputPtr;
             auto end = outputPtr + inputLengths[b];
-            ASSERT_THAT(std::vector(begin, end), ::testing::Each(tokenId)) << "input tokens: "
-                                                                           << "b:" << b << " bw: " << bw;
+            ASSERT_THAT(std::vector(begin, end), ::testing::Each(tokenId))
+                << "input tokens: " << "b:" << b << " bw: " << bw;
             begin = end;
             end = begin + nbNewTokens;
-            ASSERT_THAT(std::vector(begin, end), ::testing::Each(result)) << "new tokens: "
-                                                                          << "b:" << b << " bw: " << bw;
+            ASSERT_THAT(std::vector(begin, end), ::testing::Each(result))
+                << "new tokens: " << "b:" << b << " bw: " << bw;
             begin = end;
             end = outputPtr + maxSeqLength;
-            ASSERT_THAT(std::vector(begin, end), ::testing::Each(padId)) << "padding: "
-                                                                         << "b:" << b << " bw: " << bw;
+            ASSERT_THAT(std::vector(begin, end), ::testing::Each(padId)) << "padding: " << "b:" << b << " bw: " << bw;
         }
     }
 }
