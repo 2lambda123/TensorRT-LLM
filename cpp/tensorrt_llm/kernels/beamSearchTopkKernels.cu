@@ -76,7 +76,7 @@ __launch_bounds__(THREADBLOCK_SIZE) __global__
         T score = length_penalty == 0.0f
             ? log_probs[index]
             : apply_length_penalty(log_probs[index],
-                finished[block_id] ? sequence_lengths[block_id] : sequence_lengths[block_id] + 1, length_penalty);
+                  finished[block_id] ? sequence_lengths[block_id] : sequence_lengths[block_id] + 1, length_penalty);
         partial.insert(score, index);
     }
 

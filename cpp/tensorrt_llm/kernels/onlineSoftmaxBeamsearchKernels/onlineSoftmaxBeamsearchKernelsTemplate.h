@@ -165,9 +165,9 @@ __launch_bounds__(THREADBLOCK_SIZE) __global__
         int i = beam_hyps.num_beams == nullptr ? elem_id % K : elem_id / 2 / K;
         T elem = length_penalty == 0.0f ? y[elem_id]
                                         : apply_length_penalty(y[elem_id],
-                                            finished[vector_id * K + i] ? sequence_lengths[vector_id * K + i]
-                                                                        : sequence_lengths[vector_id * K + i] + 1,
-                                            length_penalty);
+                                              finished[vector_id * K + i] ? sequence_lengths[vector_id * K + i]
+                                                                          : sequence_lengths[vector_id * K + i] + 1,
+                                              length_penalty);
         elem += diversity_rate * (T) i;
         int elem_idx = elem_id; // x[elem_id];
         partial.insert(elem, elem_idx);

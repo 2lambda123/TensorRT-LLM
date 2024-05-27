@@ -32,7 +32,7 @@ public:
         : stream_(stream)
         , allocator_(allocator)
         , cuda_device_prop_(cuda_device_prop)
-        , is_free_buffer_after_forward_(is_free_buffer_after_forward){};
+        , is_free_buffer_after_forward_(is_free_buffer_after_forward) {};
     virtual ~BaseLayer() = default;
 
     virtual cudaStream_t getStream()
