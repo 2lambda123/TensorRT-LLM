@@ -5,7 +5,7 @@ torchvision==0.16.0+cu121
 torchdata==0.7.0
 torchtext==0.16.0+cpu
 tokenizers==0.13.3
-transformers==4.36.0
+transformers==4.38.0
 diffusers==0.15.0
 accelerate==0.20.3
 colored
