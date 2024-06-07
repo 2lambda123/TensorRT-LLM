@@ -98,7 +98,7 @@ public:
     GptSession(Config const& sessionConfig, GptModelConfig const& modelConfig, WorldConfig const& worldConfig,
         std::vector<uint8_t> const& engineBuffer, LoggerPtr logger = nullptr)
         : GptSession(
-            sessionConfig, modelConfig, worldConfig, engineBuffer.data(), engineBuffer.size(), std::move(logger))
+              sessionConfig, modelConfig, worldConfig, engineBuffer.data(), engineBuffer.size(), std::move(logger))
     {
     }
 

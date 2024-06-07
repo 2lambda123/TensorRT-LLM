@@ -43,7 +43,8 @@ __global__ void apply_per_channel_scale(T* smoothed_act, const T* act, const T* 
 #if (defined(__CUDA_ARCH__) && (__CUDA_ARCH__ >= 800) && defined(ENABLE_BF16))
                           || std::is_same_v<T, __nv_bfloat16>
 #endif
-                          ) &&(kElems % 2 == 0))
+                          )
+            && (kElems % 2 == 0))
         {
             using Vec2 = typename Vec2Type<T>::type;
 #pragma unroll

@@ -79,9 +79,9 @@ enum MpiThreadSupport
 struct MpiComm
 {
     MPI_Comm group;
-    MpiComm(){};
+    MpiComm() {};
     MpiComm(MPI_Comm g)
-        : group(g){};
+        : group(g) {};
 };
 
 class MpiRequest
