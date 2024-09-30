@@ -38,8 +38,8 @@ int initDevice(WorldConfig const& worldConfig);
 std::vector<uint8_t> loadEngine(std::string const& enginePath);
 
 template <typename TInputContainer, typename TFunc>
-auto transformVector(
-    TInputContainer const& input, TFunc func) -> std::vector<std::remove_reference_t<decltype(func(input.front()))>>
+auto transformVector(TInputContainer const& input, TFunc func)
+    -> std::vector<std::remove_reference_t<decltype(func(input.front()))>>
 {
     std::vector<std::remove_reference_t<decltype(func(input.front()))>> output{};
     output.reserve(input.size());

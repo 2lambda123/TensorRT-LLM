@@ -216,7 +216,7 @@ __global__ void topk_stage_1_opt3(const T* __restrict log_probs, T* tmp_log_prob
         partial.init();
 #pragma unroll
         for (int elem_id = tid + block_lane * BLOCK_SIZE_; elem_id < vocab_size;
-             elem_id += BLOCK_SIZE_ * BLOCKS_PER_BEAM_)
+            elem_id += BLOCK_SIZE_ * BLOCKS_PER_BEAM_)
         {
             int index = elem_id + tmp_log_buf_index;
             partial.insert(tmp_log_probs[index], index);
@@ -864,7 +864,7 @@ __global__ void SeqlenMajorToBatchMajor(
     int* batchMajoredIds, int* seqlenMajorIds, int batch_size, int beam_width, int max_seq_len)
 {
     for (int idx = blockIdx.x * blockDim.x + threadIdx.x; idx < batch_size * beam_width * max_seq_len;
-         idx += gridDim.x * blockDim.x)
+        idx += gridDim.x * blockDim.x)
     {
         auto tmp_idx{idx};
         auto const beam_idx{tmp_idx % beam_width};

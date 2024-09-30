@@ -678,7 +678,7 @@ __global__ void transpose0213(
     // src permutation: [0, 1, 2, 3]
     // dst permutation: [0, 2, 1, 3]
     for (size_t tid = threadIdx.x + blockIdx.x * blockDim.x; tid < dim0 * dim1 * dim2 * dim3;
-         tid += blockDim.x * gridDim.x)
+        tid += blockDim.x * gridDim.x)
     {
         size_t tmp_idx = tid;
         const size_t dim_3_idx = tmp_idx % dim3;

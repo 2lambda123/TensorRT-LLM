@@ -545,12 +545,12 @@ TYPED_TEST(RepetitionPenaltyTest, BatchNoPenalty)
         bufferCast<float>(*repetitionPenaltyHost)[i] = 1.0f;
     }
     this->runTest(RepetitionPenaltyTestCase()
-                      .setBatchSize(batchSize)
-                      .setVocabSize(4)
-                      .setMaxInputLength(5)
-                      .setRepetitionPenalties(repetitionPenaltyHost)
-                      .setRepetitionPenaltiesSize(batchSize)
-                      .setRepetitionPenaltyType(RepetitionPenaltyType::Multiplicative));
+            .setBatchSize(batchSize)
+            .setVocabSize(4)
+            .setMaxInputLength(5)
+            .setRepetitionPenalties(repetitionPenaltyHost)
+            .setRepetitionPenaltiesSize(batchSize)
+            .setRepetitionPenaltyType(RepetitionPenaltyType::Multiplicative));
 }
 
 TYPED_TEST(RepetitionPenaltyTest, BatchLessThanOne)
@@ -563,12 +563,12 @@ TYPED_TEST(RepetitionPenaltyTest, BatchLessThanOne)
         bufferCast<float>(*repetitionPenaltyHost)[i] = 0.53f;
     }
     this->runTest(RepetitionPenaltyTestCase()
-                      .setBatchSize(batchSize)
-                      .setVocabSize(4)
-                      .setMaxInputLength(5)
-                      .setRepetitionPenalties(repetitionPenaltyHost)
-                      .setRepetitionPenaltiesSize(batchSize)
-                      .setRepetitionPenaltyType(RepetitionPenaltyType::Multiplicative));
+            .setBatchSize(batchSize)
+            .setVocabSize(4)
+            .setMaxInputLength(5)
+            .setRepetitionPenalties(repetitionPenaltyHost)
+            .setRepetitionPenaltiesSize(batchSize)
+            .setRepetitionPenaltyType(RepetitionPenaltyType::Multiplicative));
 }
 
 TYPED_TEST(RepetitionPenaltyTest, BatchGreaterThaneOne)
@@ -581,12 +581,12 @@ TYPED_TEST(RepetitionPenaltyTest, BatchGreaterThaneOne)
         bufferCast<float>(*repetitionPenaltyHost)[i] = 2.01f;
     }
     this->runTest(RepetitionPenaltyTestCase()
-                      .setBatchSize(batchSize)
-                      .setVocabSize(4)
-                      .setMaxInputLength(5)
-                      .setRepetitionPenalties(repetitionPenaltyHost)
-                      .setRepetitionPenaltiesSize(batchSize)
-                      .setRepetitionPenaltyType(RepetitionPenaltyType::Multiplicative));
+            .setBatchSize(batchSize)
+            .setVocabSize(4)
+            .setMaxInputLength(5)
+            .setRepetitionPenalties(repetitionPenaltyHost)
+            .setRepetitionPenaltiesSize(batchSize)
+            .setRepetitionPenaltyType(RepetitionPenaltyType::Multiplicative));
 }
 
 TYPED_TEST(RepetitionPenaltyTest, BatchMixed)
@@ -599,12 +599,12 @@ TYPED_TEST(RepetitionPenaltyTest, BatchMixed)
         bufferCast<float>(*repetitionPenaltyHost)[i] = 0.53 + i * 0.2f;
     }
     this->runTest(RepetitionPenaltyTestCase()
-                      .setBatchSize(batchSize)
-                      .setVocabSize(4)
-                      .setMaxInputLength(5)
-                      .setRepetitionPenalties(repetitionPenaltyHost)
-                      .setRepetitionPenaltiesSize(batchSize)
-                      .setRepetitionPenaltyType(RepetitionPenaltyType::Multiplicative));
+            .setBatchSize(batchSize)
+            .setVocabSize(4)
+            .setMaxInputLength(5)
+            .setRepetitionPenalties(repetitionPenaltyHost)
+            .setRepetitionPenaltiesSize(batchSize)
+            .setRepetitionPenaltyType(RepetitionPenaltyType::Multiplicative));
 }
 
 TYPED_TEST(RepetitionPenaltyTest, PenaltyTypeAdditive)
@@ -617,12 +617,12 @@ TYPED_TEST(RepetitionPenaltyTest, PenaltyTypeAdditive)
         bufferCast<float>(*repetitionPenaltyHost)[i] = 0.53 + i * 0.2f;
     }
     this->runTest(RepetitionPenaltyTestCase()
-                      .setBatchSize(batchSize)
-                      .setVocabSize(4)
-                      .setMaxInputLength(5)
-                      .setRepetitionPenalties(repetitionPenaltyHost)
-                      .setRepetitionPenaltiesSize(batchSize)
-                      .setRepetitionPenaltyType(RepetitionPenaltyType::Additive));
+            .setBatchSize(batchSize)
+            .setVocabSize(4)
+            .setMaxInputLength(5)
+            .setRepetitionPenalties(repetitionPenaltyHost)
+            .setRepetitionPenaltiesSize(batchSize)
+            .setRepetitionPenaltyType(RepetitionPenaltyType::Additive));
 }
 
 TYPED_TEST(RepetitionPenaltyTest, PenaltyTypeAdditiveHasDefaultValueZero2)
@@ -635,12 +635,12 @@ TYPED_TEST(RepetitionPenaltyTest, PenaltyTypeAdditiveHasDefaultValueZero2)
         bufferCast<float>(*repetitionPenaltyHost)[i] = i % 2 == 0 ? 1.0f : 0.0f;
     }
     this->runTest(RepetitionPenaltyTestCase()
-                      .setBatchSize(batchSize)
-                      .setVocabSize(4)
-                      .setMaxInputLength(5)
-                      .setRepetitionPenalties(repetitionPenaltyHost)
-                      .setRepetitionPenaltiesSize(batchSize)
-                      .setRepetitionPenaltyType(RepetitionPenaltyType::Additive));
+            .setBatchSize(batchSize)
+            .setVocabSize(4)
+            .setMaxInputLength(5)
+            .setRepetitionPenalties(repetitionPenaltyHost)
+            .setRepetitionPenaltiesSize(batchSize)
+            .setRepetitionPenaltyType(RepetitionPenaltyType::Additive));
 }
 
 TYPED_TEST(RepetitionPenaltyTest, PenaltyTypeNone)
@@ -653,12 +653,12 @@ TYPED_TEST(RepetitionPenaltyTest, PenaltyTypeNone)
         bufferCast<float>(*repetitionPenaltyHost)[i] = 0.53 + i * 0.2f;
     }
     this->runTest(RepetitionPenaltyTestCase()
-                      .setBatchSize(batchSize)
-                      .setVocabSize(4)
-                      .setMaxInputLength(5)
-                      .setRepetitionPenalties(repetitionPenaltyHost)
-                      .setRepetitionPenaltiesSize(batchSize)
-                      .setRepetitionPenaltyType(RepetitionPenaltyType::None));
+            .setBatchSize(batchSize)
+            .setVocabSize(4)
+            .setMaxInputLength(5)
+            .setRepetitionPenalties(repetitionPenaltyHost)
+            .setRepetitionPenaltiesSize(batchSize)
+            .setRepetitionPenaltyType(RepetitionPenaltyType::None));
 }
 
 struct MinLengthPenaltyTestParams

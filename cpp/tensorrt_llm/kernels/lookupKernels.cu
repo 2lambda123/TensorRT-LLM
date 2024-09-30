@@ -43,7 +43,7 @@ __global__ void lookup_kernel(T* output, const Idx* input, const T* weight, cons
     const Idx size, const int n_embed)
 {
     for (int index = blockIdx.x * blockDim.x + threadIdx.x; index < batch_size * n_embed;
-         index += blockDim.x * gridDim.x)
+        index += blockDim.x * gridDim.x)
     {
         const int word_index = input[index / n_embed] - offset;
         const int col_index = index % n_embed;

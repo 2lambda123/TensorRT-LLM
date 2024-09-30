@@ -285,7 +285,7 @@ void DynamicDecodeLayer<T>::forward(OutputParams& outputs, ForwardParams const& 
         const int dynamic_decode_total_iteration = local_batch_size / dynamic_decode_batch_size;
 
         for (uint32_t dynamic_ite = ite * dynamic_decode_total_iteration;
-             dynamic_ite < (ite + 1) * dynamic_decode_total_iteration; ++dynamic_ite)
+            dynamic_ite < (ite + 1) * dynamic_decode_total_iteration; ++dynamic_ite)
         {
             const int dynamic_id_offset = dynamic_ite * dynamic_decode_batch_size * beam_width;
             const int dynamic_decode_vocab_size_units_offset = dynamic_id_offset * vocab_size_padded_;

@@ -252,20 +252,20 @@ struct FastInterleavedAndBiasedNumericArrayConverter<half_t, uint4b_t, 8>
         const uint32_t top_i4s = i4s >> 8;
         // Extract elt_01 - (i4s & 0x000f000f) | 0x64006400
         asm volatile("lop3.b32 %0, %1, %2, %3, %4;\n"
-                     : "=r"(h[0])
-                     : "r"(i4s), "n"(BOTTOM_MASK), "n"(I4s_TO_F16s_MAGIC_NUM), "n"(immLut));
+            : "=r"(h[0])
+            : "r"(i4s), "n"(BOTTOM_MASK), "n"(I4s_TO_F16s_MAGIC_NUM), "n"(immLut));
         // Extract elt_23 (i4s & 0x00f000f0) | 0x64006400
         asm volatile("lop3.b32 %0, %1, %2, %3, %4;\n"
-                     : "=r"(h[1])
-                     : "r"(i4s), "n"(TOP_MASK), "n"(I4s_TO_F16s_MAGIC_NUM), "n"(immLut));
+            : "=r"(h[1])
+            : "r"(i4s), "n"(TOP_MASK), "n"(I4s_TO_F16s_MAGIC_NUM), "n"(immLut));
         // Extract elt_45 (top_i4s & 0x000f000f) | 0x64006400
         asm volatile("lop3.b32 %0, %1, %2, %3, %4;\n"
-                     : "=r"(h[2])
-                     : "r"(top_i4s), "n"(BOTTOM_MASK), "n"(I4s_TO_F16s_MAGIC_NUM), "n"(immLut));
+            : "=r"(h[2])
+            : "r"(top_i4s), "n"(BOTTOM_MASK), "n"(I4s_TO_F16s_MAGIC_NUM), "n"(immLut));
         // Extract elt_67 (top_i4s & 0x00f000f0) | 0x64006400
         asm volatile("lop3.b32 %0, %1, %2, %3, %4;\n"
-                     : "=r"(h[3])
-                     : "r"(top_i4s), "n"(TOP_MASK), "n"(I4s_TO_F16s_MAGIC_NUM), "n"(immLut));
+            : "=r"(h[3])
+            : "r"(top_i4s), "n"(TOP_MASK), "n"(I4s_TO_F16s_MAGIC_NUM), "n"(immLut));
 
         // I use inline PTX below because I am not sure if the compiler will emit float2half instructions if I use the
         // half2 ctor. In this case, I chose performance reliability over code readability.
@@ -361,16 +361,16 @@ struct FastInterleavedAndBiasedNumericArrayConverter<bfloat16_t, uint4b_t, 8>
         // No shift needed for first item.
         uint32_t i4s = source_i4s;
         asm volatile("lop3.b32 %0, %1, %2, %3, %4;\n"
-                     : "=r"(h[0])
-                     : "r"(i4s), "n"(MASK), "n"(I4s_TO_BF16s_MAGIC_NUM), "n"(immLut));
+            : "=r"(h[0])
+            : "r"(i4s), "n"(MASK), "n"(I4s_TO_BF16s_MAGIC_NUM), "n"(immLut));
         CUTLASS_PRAGMA_UNROLL
         for (int ii = 1; ii < result_type::kElements / 2; ++ii)
         {
             i4s >>= sizeof_bits<typename source_type::Element>::value;
             // (i4s & 0x000f000f) | 0x43004300
             asm volatile("lop3.b32 %0, %1, %2, %3, %4;\n"
-                         : "=r"(h[ii])
-                         : "r"(i4s), "n"(MASK), "n"(I4s_TO_BF16s_MAGIC_NUM), "n"(immLut));
+                : "=r"(h[ii])
+                : "r"(i4s), "n"(MASK), "n"(I4s_TO_BF16s_MAGIC_NUM), "n"(immLut));
         }
 
         // This is the BF16 {-136, -136} represented as an integer.

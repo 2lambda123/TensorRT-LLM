@@ -34,7 +34,7 @@ __global__ void applyTemperaturePenalty(T* logits, const T* bias, const float te
     const bool IS_FP16 = std::is_same<T, half>::value;
     const T MAX_T_VAL = (IS_FP16) ? 65504.F : FLT_MAX;
     for (int index = blockIdx.x * blockDim.x + threadIdx.x; index < m * vocabSizePadded;
-         index += blockDim.x * gridDim.x)
+        index += blockDim.x * gridDim.x)
     {
         T biasVal = bias == nullptr ? (T) (0.0f) : bias[index % vocabSizePadded];
         if (index % vocabSizePadded < vocabSize)
@@ -60,7 +60,7 @@ __global__ void applyTemperaturePenalty(half2* logits, const half2* bias, const 
     const int halfVocabSize = vocabSize / 2;
     const int halfVocabSizePaddeded = vocabSizePaddeded / 2;
     for (int index = blockIdx.x * blockDim.x + threadIdx.x; index < batchSize * halfVocabSizePaddeded;
-         index += blockDim.x * gridDim.x)
+        index += blockDim.x * gridDim.x)
     {
         int vocabIdx = index % halfVocabSizePaddeded;
         half2 logit = vocabIdx < halfVocabSize ? __ldg(&logits[index]) : maskVal;
@@ -115,7 +115,7 @@ __global__ void batchApplyTemperaturePenalty(T* logits, const T* bias, const flo
     __syncthreads();
 
     for (int index = blockIdx.x * blockDim.x + threadIdx.x; index < batchSize * vocabSizePadded;
-         index += blockDim.x * gridDim.x)
+        index += blockDim.x * gridDim.x)
     {
         int batchIdx = index / vocabSizePadded;
         int vocabIdx = index % vocabSizePadded;
@@ -148,7 +148,7 @@ __global__ void batchApplyTemperaturePenalty_h2(half2* logits, const half2* bias
     const int halfVocabSize = vocabSize / 2;
     const int halfVocabSizePaddeded = vocabSizePaddeded / 2;
     for (int index = blockIdx.x * blockDim.x + threadIdx.x; index < batchSize * halfVocabSizePaddeded;
-         index += blockDim.x * gridDim.x)
+        index += blockDim.x * gridDim.x)
     {
         int batchIdx = index / halfVocabSizePaddeded;
         int vocabIdx = index % halfVocabSizePaddeded;
