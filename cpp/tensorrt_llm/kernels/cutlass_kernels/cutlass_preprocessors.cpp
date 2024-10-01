@@ -519,7 +519,7 @@ void interleave_column_major_tensor(int8_t* interleaved_quantized_tensor, const 
             for (int base_vec_row = 0; base_vec_row < num_vec_rows; base_vec_row += vec_rows_per_tile)
             {
                 for (int vec_read_row = base_vec_row;
-                     vec_read_row < std::min(num_vec_rows, base_vec_row + vec_rows_per_tile); ++vec_read_row)
+                    vec_read_row < std::min(num_vec_rows, base_vec_row + vec_rows_per_tile); ++vec_read_row)
                 {
                     const int64_t vec_write_row = interleave * base_vec_row
                         + vec_rows_per_tile * (read_col % interleave) + vec_read_row % vec_rows_per_tile;

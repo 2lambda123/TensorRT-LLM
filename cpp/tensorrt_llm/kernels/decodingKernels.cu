@@ -31,7 +31,7 @@ namespace kernels
 __global__ void gatherTree(gatherTreeParam param)
 {
     for (int batchbeam_idx = blockIdx.x * blockDim.x + threadIdx.x; batchbeam_idx < param.batch_size * param.beam_width;
-         batchbeam_idx += gridDim.x * blockDim.x)
+        batchbeam_idx += gridDim.x * blockDim.x)
     {
         const int batch = batchbeam_idx / param.beam_width;
         const int beam = batchbeam_idx % param.beam_width;
@@ -459,7 +459,7 @@ __global__ void copyNextStepIds(int* next_step_ids, int** output_ids_ptr, const 
     int beam_width, int max_seq_len)
 {
     for (int index = blockIdx.x * blockDim.x + threadIdx.x; index < batch_size * beam_width;
-         index += blockDim.x * gridDim.x)
+        index += blockDim.x * gridDim.x)
     {
         const int batch_idx{index / beam_width};
         const int beam_idx{index % beam_width};

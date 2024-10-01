@@ -330,7 +330,7 @@ __device__ void weight_only_batched_gemv(const uint8_t* qweight, const ActType* 
 
     // Iteration in k dimensions
     for (int local_k = tid * Details::kElemsPerThread; local_k < k * Interleave;
-         local_k += BlockSize * Details::kElemsPerThread)
+        local_k += BlockSize * Details::kElemsPerThread)
     {
         ActType weights_f16[Details::kElemsPerThread * NPerBlock];
         ActType scale[NPerBlock], zero[NPerBlock];

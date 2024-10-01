@@ -164,14 +164,14 @@ inline __device__ T atomicMaxExtdV2(T* address, T val)
     if constexpr (std::is_same_v<T, half>)
     {
         asm volatile("atom.global.v2.f16.max.noftz {%0, %1}, [%2], {%3, %4};"
-                     : "=h"(old.u[0]), "=h"(old.u[1])
-                     : "l"(aligned_address), "h"(tmp.u[0]), "h"(tmp.u[1]));
+            : "=h"(old.u[0]), "=h"(old.u[1])
+            : "l"(aligned_address), "h"(tmp.u[0]), "h"(tmp.u[1]));
     }
     if constexpr (std::is_same_v<T, __nv_bfloat16>)
     {
         asm volatile("atom.global.v2.bf16.max.noftz {%0, %1}, [%2], {%3, %4};"
-                     : "=h"(old.u[0]), "=h"(old.u[1])
-                     : "l"(aligned_address), "h"(tmp.u[0]), "h"(tmp.u[1]));
+            : "=h"(old.u[0]), "=h"(old.u[1])
+            : "l"(aligned_address), "h"(tmp.u[0]), "h"(tmp.u[1]));
     }
 
     // Return the correct half.
