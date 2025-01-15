@@ -10,7 +10,7 @@ diffusers==0.15.0
 accelerate==0.20.3
 colored
 polygraphy
-onnx==1.16.0
+onnx==1.17.0
 mpi4py
 numpy
 cuda-python==12.2.0
