@@ -1,6 +1,6 @@
 build
 torch
-transformers==4.38.0
+transformers==4.48.0
 diffusers==0.15.0
 accelerate==0.20.3
 colored
